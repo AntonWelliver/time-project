@@ -27,6 +27,8 @@ body {
 
 #home-section .home-inner {
     padding-top: 100px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-variant: small-caps;
 }
 
 #home-section .card-form {
