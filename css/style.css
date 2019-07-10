@@ -54,3 +54,30 @@ body {
     height: 400px;
     padding-top: 20px;
 }
+
+.carousel-item {
+    height: 450px;
+}
+
+.carousel-image-1 {
+    background : url('../img/runners2.jpg');
+    background-size: cover;
+}
+
+.carousel-image-2 {
+    background : url('../img/runner2.jpg');
+    background-size: cover;
+}
+
+.carousel-image-3 {
+    background : url('../img/runner3.jpg');
+    background-size: cover;
+}
+
+.modal-content {
+    background: rgba(80, 160, 240, 0.842);
+}
+
+.form-group {
+    color:black;
+}
