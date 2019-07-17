@@ -81,3 +81,11 @@ body {
 .form-group {
     color:black;
 }
+
+#admin-section .admin-inner {
+    padding-top: 100px;
+}
+
+.race-info {
+    color: rgb(100, 96, 96);
+}
