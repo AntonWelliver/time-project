@@ -92,8 +92,26 @@ body {
 
 .race-text {
     background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    left: 0;
 }
 
 .race-text-color {
     color: white;
+}
+
+.race-table {
+    color: rgb(100, 96, 96);
+}
+
+option:first {
+    color: #999;
+}
+
+.delete-item {
+    color: red;
+}
+
+.edit-item {
+    color: orange;
 }

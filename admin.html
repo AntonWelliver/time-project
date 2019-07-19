@@ -36,21 +36,51 @@
         </div>
     </nav>
 
-    <!-- Contact -->
     <section id="admin-section" class="py-3">
         <div class="admin-inner container">
             <div class="row">
                 <div class="col-md-6">
                     <div class="card p-4">
-                        <div class="card-body">
-                            <h4>Races</h4>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic, illum!</p>
-                            <h4>Address</h4>
-                            <p>550 Main Street, Boston MA</p>
-                            <h4>Email</h4>
-                            <p>test@test.com</p>
-                            <h4>Phone</h4>
-                            <p>(555)-555-5555</p>
+                        <div class="card-body race-table">
+                                <button class="btn btn-outline-success" data-toggle="tooltip" data-placement="right" title="Click to add a new race">New Race <i class="fas fa-plus"></i></button>
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Date</th>
+                                        <th scope="col">Location</th>
+                                        <th scope="col">Show</th>
+                                        <th scope="col">Edit</th>
+                                        <th scope="col">Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                        <td>Summer Race 10k</td>
+                                        <td>20 Juli</td>
+                                        <td>Gothenburg</td>
+                                        <td><a href="#" class="star-item"><i class="far fa-star"></i></a></td>
+                                        <td><a href="#" class="edit-item"><i class="fa fa-pencil"></i></a></td>
+                                        <td><a href="#" class="delete-item"><i class="fa fa-remove"></i></a></td>
+                                        </tr>
+                                        <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><a href="#" class="star-item"><i class="far fa-star"></i></a></td>
+                                        <td><a href="#" class="edit-item"><i class="fa fa-pencil"></i></a></td>
+                                        <td><a href="#" class="delete-item"><i class="fa fa-remove"></i></a></td>
+                                        </tr>
+                                        <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td><a href="#" class="star-item"><i class="far fa-star"></i></a></td>
+                                        <td><a href="#" class="edit-item"><i class="fa fa-pencil"></i></a></td>
+                                        <td><a href="#" class="delete-item"><i class="fa fa-remove"></i></a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                         </div>
                     </div>
         
@@ -63,32 +93,36 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Race Name"> 
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <input type="number" class="form-control" placeholder="Distance"> 
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="date" class="form-control" placeholder="Date"> 
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <input type="time" class="form-control" placeholder="Time"> 
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Location"> 
+                                        <input type="text" class="form-control" placeholder="Race Name" required> 
                                     </div>
                                 </div>
                                 <div class="col-md-5">
                                     <div class="form-group">
-                                        <input type="number" class="form-control" placeholder="Race Capacity"> 
+                                        <input type="number" class="form-control" placeholder="Distance" required> 
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="datetime-local" class="form-control" placeholder="Date" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" placeholder="Race Capacity" required> 
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Location" required> 
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <select required>
+                                            <option value="" disabled selected>Info</option>
+                                            <option value="spring-race">Male</option>
+                                            <option value="summer-race">Female</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
