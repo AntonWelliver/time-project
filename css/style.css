@@ -89,3 +89,11 @@ body {
 .race-info {
     color: rgb(100, 96, 96);
 }
+
+.race-text {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.race-text-color {
+    color: white;
+}
