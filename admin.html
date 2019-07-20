@@ -23,7 +23,7 @@
                             <a href="/signup.html" class="nav-link">Races</a>
                         </li>
                         <li class="nav-item">
-                                <a href="" class="nav-link">Startlist</a>
+                                <a href="/startlist.html" class="nav-link">Startlist</a>
                         </li>
                         <li class="nav-item">
                                 <a href="" class="nav-link">Live</a>
@@ -62,7 +62,7 @@
                                     </thead>
                                     <tbody>
                                         <tr>
-                                        <td>Summer Race 10k</td>
+                                        <td>Summer Race 5k</td>
                                         <td>20 Juli</td>
                                         <td>Gothenburg</td>
                                         <td><a href="#" class="star-item"><i class="far fa-star"></i></a></td>
@@ -104,7 +104,12 @@
                                 </div>
                                 <div class="col-md-5">
                                     <div class="form-group">
-                                        <input type="number" class="form-control" placeholder="Distance" required> 
+                                        <div class="input-group">
+                                            <input type="number" class="form-control" placeholder="Distance" required>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">km</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -124,8 +129,9 @@
                                 </div>
                                 <div class="col-md-5">
                                     <div class="form-group">
+                                        <label for="admin-race">Class:</label>
                                         <select required>
-                                            <option value="" disabled selected>Info</option>
+                                            <option value="" disabled selected>...</option>
                                             <option value="spring-race">Male</option>
                                             <option value="summer-race">Female</option>
                                         </select>
@@ -135,7 +141,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <textarea class="form-control" placeholder="Message"></textarea>
+                                            <textarea class="form-control" placeholder="Race Info..."></textarea>
                                         </div>
                                     </div>
                                 <div class="col-md-6">

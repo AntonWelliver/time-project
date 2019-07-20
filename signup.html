@@ -23,7 +23,7 @@
                             <a href="/signup.html" class="nav-link">Races</a>
                         </li>
                         <li class="nav-item">
-                                <a href="" class="nav-link">Startlist</a>
+                                <a href="/startlist.html" class="nav-link">Startlist</a>
                         </li>
                         <li class="nav-item">
                                 <a href="" class="nav-link">Live</a>
@@ -32,7 +32,7 @@
                                 <a href="" class="nav-link">Results</a>
                         </li>
                         <li class="nav-item">
-                                <a href="" class="nav-link">Contact</a>
+                                <a href="" class="nav-link" data-toggle="modal" data-target="#contactModal">Contact</a>
                         </li>
                         <li class="nav-item">
                                 <a href="" class="nav-link">Log In</a>
@@ -95,7 +95,6 @@
                 <div class="col text-center py-4">
                     <h3>Run For Joy</h3>
                     <p>Copyright &copy; <span id="year"></span></p>
-                    <button class="btn btn-primary" data-toggle="modal" data-target="#contactModal">Contact Us</button>
                 </div>
             </div>
         </div>
@@ -114,34 +113,33 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
-                            <select>
+                            <label for="race">Race*</label><br>
+                            <select required>
+                                <option value="" disabled selected>...</option>
                                 <option value="spring-race">Spring Race 10k</option>
                                 <option value="summer-race">Summer Race 5k</option>
                                 <option value="fall-race">Final Race 21k</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="skill-level">Skill Level</label><br>
-                            <input type="radio" name="skill-level" value="competitive" checked> Competitive<br>
-                            <input type="radio" name="skill-level" value="non-competitive"> Non Competitive
+                            <label for="class">Class*</label><br>
+                            <select required>
+                                <option value="" disabled selected>...</option>
+                                <option value="spring-race">Male</option>
+                                <option value="summer-race">Female</option>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <label for="gender">Gender</label><br>
-                            <input type="radio" name="gender" value="male" checked> Male<br>
-                            <input type="radio" name="gender" value="female"> Female<br>
-                            <input type="radio" name="gender" value="other"> Other
+                            <label for="name">Name*</label>
+                            <input type="text" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control">
+                            <label for="email">Email*</label>
+                            <input type="email" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label for="phone-nr">Phone Number</label>
-                            <input type="tel" pattern="[0-9]{4}-[0-9]{6}" class="form-control">
+                            <input type="tel" pattern="[0-9]{4}-[0-9]{6}" class="form-control" required>
                         </div>
                     </form>
                 </div>

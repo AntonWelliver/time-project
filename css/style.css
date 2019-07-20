@@ -115,3 +115,19 @@ option:first {
 .edit-item {
     color: orange;
 }
+
+#startlist-search .startlist-inner {
+    padding-top: 80px;
+}
+
+.required-item {
+    color: red;
+}
+
+.fa-asterisk {
+    font-size: 7px;
+}
+
+.side-info {
+    opacity: 0.0;
+}
