@@ -5,7 +5,7 @@
         "distance": 10,
         "date": "2019-04-12 15:00",
         "capacity": 100,
-        "location": "Gothenburg",
+        "location": "Malmö",
         "message": "Welcome to the Spring Race 10km in Gothenburg! Good luck!",
         "show": false
     },
@@ -35,7 +35,7 @@
         "distance": 2,
         "date": "2019-06-02 18:00",
         "capacity": 20,
-        "location": "Malmö",
+        "location": "Gothenburg",
         "message": "Welcome to the Sprint Race 2km in Malmö! Good luck!",
         "show": false
     }

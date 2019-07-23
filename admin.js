@@ -41,6 +41,7 @@ class UI {
         </tr>
             `;
           });
+          //Update Race Table With Content
           this.raceTableBody.innerHTML = output;
     }
 }
