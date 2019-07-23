@@ -45,10 +45,10 @@
     <section id="admin-section" class="py-3">
         <div class="admin-inner container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6" id="raceInfoTable">
                     <div class="card p-4">
                         <div class="card-body race-table">
-                                <button class="btn btn-outline-success" data-toggle="tooltip" data-placement="right" title="Click to add a new race">New Race <i class="fas fa-plus"></i></button>
+                                <button class="btn btn-outline-success mb-2" data-toggle="tooltip" data-placement="right" title="Click to add a new race">New Race <i class="fas fa-plus"></i></button>
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
@@ -60,30 +60,30 @@
                                         <th scope="col">Delete</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="raceTableBody">
                                         <tr>
-                                        <td>Summer Race 5k</td>
-                                        <td>20 Juli</td>
-                                        <td>Gothenburg</td>
-                                        <td><a href="#" class="star-item"><i class="far fa-star"></i></a></td>
-                                        <td><a href="#" class="edit-item"><i class="fa fa-pencil"></i></a></td>
-                                        <td><a href="#" class="delete-item"><i class="fa fa-remove"></i></a></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td><a href="#" class="star-item"><i class="far fa-star"></i></a></td>
+                                            <td><a href="#" class="edit-item"><i class="fa fa-pencil"></i></a></td>
+                                            <td><a href="#" class="delete-item"><i class="fa fa-remove"></i></a></td>
                                         </tr>
                                         <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td><a href="#" class="star-item"><i class="far fa-star"></i></a></td>
-                                        <td><a href="#" class="edit-item"><i class="fa fa-pencil"></i></a></td>
-                                        <td><a href="#" class="delete-item"><i class="fa fa-remove"></i></a></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td><a href="#" class="star-item"><i class="far fa-star"></i></a></td>
+                                            <td><a href="#" class="edit-item"><i class="fa fa-pencil"></i></a></td>
+                                            <td><a href="#" class="delete-item"><i class="fa fa-remove"></i></a></td>
                                         </tr>
                                         <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td><a href="#" class="star-item"><i class="far fa-star"></i></a></td>
-                                        <td><a href="#" class="edit-item"><i class="fa fa-pencil"></i></a></td>
-                                        <td><a href="#" class="delete-item"><i class="fa fa-remove"></i></a></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td><a href="#" class="star-item"><i class="far fa-star"></i></a></td>
+                                            <td><a href="#" class="edit-item"><i class="fa fa-pencil"></i></a></td>
+                                            <td><a href="#" class="delete-item"><i class="fa fa-remove"></i></a></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -91,7 +91,7 @@
                     </div>
         
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6" id="raceInfoEdit">
                     <div class="card p-4">
                         <div class="card-body race-info">
                             <h3 class="text-center">Race Info</h3>
@@ -99,13 +99,13 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Race Name" required> 
+                                        <input type="text" id="race-name" class="form-control" placeholder="Race Name" required> 
                                     </div>
                                 </div>
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <input type="number" class="form-control" placeholder="Distance" required>
+                                            <input type="number" id="race-distance" class="form-control" placeholder="Distance" required>
                                             <div class="input-group-append">
                                                 <span class="input-group-text">km</span>
                                             </div>
@@ -114,23 +114,23 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="datetime-local" class="form-control" placeholder="Date" required>
+                                        <input type="datetime-local" id="race-date" class="form-control" placeholder="Date" required>
                                     </div>
                                 </div>
                                 <div class="col-md-5">
                                     <div class="form-group">
-                                        <input type="number" class="form-control" placeholder="Race Capacity" required> 
+                                        <input type="number" id="race-capacity" class="form-control" placeholder="Race Capacity" required> 
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Location" required> 
+                                        <input type="text" id="race-location" class="form-control" placeholder="Location" required> 
                                     </div>
                                 </div>
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <label for="admin-race">Class:</label>
-                                        <select required>
+                                        <select id="race-class" required>
                                             <option value="" disabled selected>...</option>
                                             <option value="spring-race">Male</option>
                                             <option value="summer-race">Female</option>
@@ -141,7 +141,7 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <textarea class="form-control" placeholder="Race Info..."></textarea>
+                                            <textarea id="race-message" class="form-control" placeholder="Race Info..."></textarea>
                                         </div>
                                     </div>
                                 <div class="col-md-6">
@@ -202,5 +202,6 @@
             }
         });
     </script>
+    <script src="admin.js"></script>
 </body>
 </html>

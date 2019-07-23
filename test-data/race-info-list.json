@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "name": "Spring Race 10km",
+        "distance": 10,
+        "date": "2019-04-12 15:00",
+        "capacity": 100,
+        "location": "Gothenburg",
+        "message": "Welcome to the Spring Race 10km in Gothenburg! Good luck!",
+        "show": false
+    },
+    {
+        "id": 2,
+        "name": "Summer Race 5km",
+        "distance": 5,
+        "date": "2019-07-20 16:00",
+        "capacity": 30,
+        "location": "Gothenburg",
+        "message": "Welcome to the Summer Race 5km in Gothenburg! Good luck!",
+        "show": false
+    },
+    {
+        "id": 3,
+        "name": "Fall Race 21km",
+        "distance": 21,
+        "date": "2019-10-05 12:00",
+        "capacity": 300,
+        "location": "Stockholm",
+        "message": "Welcome to the Fall Race 21km in Stockholm! Good luck!",
+        "show": false
+    },
+    {
+        "id": 4,
+        "name": "Sprint Race 2km",
+        "distance": 2,
+        "date": "2019-06-02 18:00",
+        "capacity": 20,
+        "location": "Malmö",
+        "message": "Welcome to the Sprint Race 2km in Malmö! Good luck!",
+        "show": false
+    }
+]
