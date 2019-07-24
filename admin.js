@@ -4,6 +4,7 @@ class UI {
         this.raceInfoEdit = document.getElementById('raceInfoEdit');
         this.raceInfoTable = document.getElementById('raceInfoTable');
         this.raceTableBody = document.getElementById('raceTableBody');
+        this.newRaceButton = document.getElementById('newRaceButton');
     }
 
     hideRaceInfoEdit() {
@@ -13,6 +14,14 @@ class UI {
     expandRaceInfoTable() {
         this.raceInfoTable.classList.remove("col-md-6");
         this.raceInfoTable.classList.add("col-md-12");
+    }
+    displayRaceInfoEdit() {
+        this.raceInfoEdit.classList.remove("d-none");
+    }
+    
+    decreaseRaceInfoTable() {
+        this.raceInfoTable.classList.remove("col-md-12");
+        this.raceInfoTable.classList.add("col-md-6");
     }
 
     updateRaceTable(theRaceList) {
@@ -74,3 +83,12 @@ ui.hideRaceInfoEdit();
 ui.expandRaceInfoTable();
 
 getRaceInfo();
+
+ui.newRaceButton.addEventListener("click", displayRaceInfo);
+
+function displayRaceInfo(e) {
+    ui.decreaseRaceInfoTable();
+    ui.displayRaceInfoEdit();
+
+    e.preventDefault();
+}
