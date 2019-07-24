@@ -5,6 +5,15 @@ class UI {
         this.raceInfoTable = document.getElementById('raceInfoTable');
         this.raceTableBody = document.getElementById('raceTableBody');
         this.newRaceButton = document.getElementById('newRaceButton');
+        this.saveButton = document.getElementById('saveButton');
+        this.raceName = document.getElementById('race-name');
+        this.raceDistance = document.getElementById('race-distance');
+        this.raceDate = document.getElementById('race-date');
+        this.raceCapacity = document.getElementById('race-capacity');
+        this.raceLocation = document.getElementById('race-location');
+        this.raceCompetitionClass = document.getElementById('race-competition-class');
+        this.raceMessage = document.getElementById('race-message');
+        this.alert = document.getElementById('alert');
     }
 
     hideRaceInfoEdit() {
@@ -15,6 +24,7 @@ class UI {
         this.raceInfoTable.classList.remove("col-md-6");
         this.raceInfoTable.classList.add("col-md-12");
     }
+
     displayRaceInfoEdit() {
         this.raceInfoEdit.classList.remove("d-none");
     }
@@ -22,6 +32,18 @@ class UI {
     decreaseRaceInfoTable() {
         this.raceInfoTable.classList.remove("col-md-12");
         this.raceInfoTable.classList.add("col-md-6");
+    }
+
+    hideAlert() {
+        this.alert.classList.add("d-none");
+    }
+
+    showAlert(alertMessage, alertClass) {
+        this.alert.classList.remove("d-none");
+        this.alert.classList.add(alertClass);
+        this.alert.classList.add("text-center");
+
+        this.alert.innerHTML = `<h4>${alertMessage}</h4>`;
     }
 
     updateRaceTable(theRaceList) {
@@ -78,7 +100,7 @@ function getRaceInfo() {
     .catch(err => console.log(err));
 }
 
-
+ui.hideAlert();
 ui.hideRaceInfoEdit();
 ui.expandRaceInfoTable();
 
@@ -89,6 +111,41 @@ ui.newRaceButton.addEventListener("click", displayRaceInfo);
 function displayRaceInfo(e) {
     ui.decreaseRaceInfoTable();
     ui.displayRaceInfoEdit();
-
+    
     e.preventDefault();
 }
+
+ui.saveButton.addEventListener("click", saveRaceInfo);
+
+function saveRaceInfo(e) {
+    const name = ui.raceName.value;
+    const distance = ui.raceDistance.value;
+    const date = ui.raceDate.value;
+    const capacity = ui.raceCapacity.value;
+    const location = ui.raceLocation.value;
+    const competitionClass = ui.raceCompetitionClass.value;
+    const message = ui.raceMessage.value;
+
+    //Data For Database
+    const data = {
+        name,
+        distance,
+        date,
+        capacity,
+        location,
+        competitionClass,
+        message
+    }
+
+    //Create Post
+    //test.post("test-data/race-info-list.json", data)
+
+    ui.showAlert("Save successful.", "bg-success");
+    setTimeout(() => {
+        ui.hideAlert();
+    }, 2000);
+
+    getRaceInfo();
+    e.preventDefault();
+}
+
