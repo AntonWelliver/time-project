@@ -14,6 +14,8 @@ class UI {
         this.raceCompetitionClass = document.getElementById('race-competition-class');
         this.raceMessage = document.getElementById('race-message');
         this.alert = document.getElementById('alert');
+        this.raceId = "";
+        this.state = "";
     }
 
     hideRaceInfoEdit() {
@@ -67,8 +69,8 @@ class UI {
             <td>${race.date}</td>
             <td>${race.location}</td>
             <td>${star}</td>
-            <td><a href="#" class="edit-item"><i class="fa fa-pencil"></i></a></td>
-            <td><a href="#" class="delete-item"><i class="fa fa-remove"></i></a></td>
+            <td><a href="#" class="edit-item" data-id="${race.id}"><i class="fa fa-pencil"></i></a></td>
+            <td><a href="#" class="delete-item" data-id="${race.id}"><i class="fa fa-remove"></i></a></td>
         </tr>
             `;
           });
@@ -92,6 +94,24 @@ class testData {
 }
 
 let test = new testData();
+
+//Listen For Edit State
+ui.raceTableBody.addEventListener("click", editRaceInfo);
+
+function editRaceInfo(e) {
+    if(e.target.parentElement.classList.contains("edit-item")) {
+        const id = e.target.parentElement.dataset.id;
+
+        ui.raceId = id;
+        ui.state = "edit";
+        //Get Data From Database
+        ui.decreaseRaceInfoTable();
+        ui.displayRaceInfoEdit();
+    }
+
+
+    e.preventDefault();
+}
 
 
 function getRaceInfo() {
@@ -136,6 +156,9 @@ function saveRaceInfo(e) {
         competitionClass,
         message
     }
+
+    //Check For Edit State
+    //If Edit Then PUT Or Else POST
 
     //Create Post
     //test.post("test-data/race-info-list.json", data)
