@@ -1,0 +1,55 @@
+{{#each errors}}
+<div class="alert alert-danger">{{text}}</div>
+{{else}}
+
+{{/each}}
+
+<div class="card card-body">
+    <h3>Races</h3>
+    <form action="/races" method="post">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" id="race-name" name="name" class="form-control" placeholder="Race Name" required>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input type="number" id="race-distance" name="distance" class="form-control" placeholder="Distance" required>
+                        <div class="input-group-append">
+                            <span class="input-group-text">km</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="datetime-local" id="race-date" name="date" class="form-control" placeholder="Date" required>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    <input type="number" id="race-capacity" name="capacity" class="form-control" placeholder="Race Capacity" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" id="race-location" name="location" class="form-control" placeholder="Location" required>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <textarea id="race-message" name="message" class="form-control" placeholder="Race Info..."></textarea>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <input type="submit" value="Save" id="saveButton" class="btn btn-outline-success btn-block">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
