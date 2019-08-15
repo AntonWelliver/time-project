@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
@@ -6,7 +8,7 @@ const mongoose = require('mongoose');
 const app = express();
 
 //Connect To Mongoose
-mongoose.connect('mongodb+srv://Anton123:Anton123@awcluster-agvsp.mongodb.net/test?retryWrites=true&w=majority', {
+mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true
 })
 .then(() => console.log('MongoDB Connected...'))
@@ -89,6 +91,9 @@ app.post('/races', (req, res) => {
         })
     }
 });
+
+const informationRouter = require('./routes/information')
+app.use('/information', informationRouter)
 
 const port = 5000;
 
