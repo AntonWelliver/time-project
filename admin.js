@@ -81,7 +81,7 @@ class UI {
 
 ui = new UI();
 
-class testData {
+class AccessHTTP {
     constructor() {
 
     }
@@ -93,7 +93,7 @@ class testData {
     }
 }
 
-let test = new testData();
+let accessHTTP = new AccessHTTP();
 
 //Listen For Edit State
 ui.raceTableBody.addEventListener("click", editRaceInfo);
@@ -115,7 +115,7 @@ function editRaceInfo(e) {
 
 
 function getRaceInfo() {
-    test.get("test-data/race-info-list.json")
+    accessHTTP.get("http://localhost:5000/information")
     .then(data => ui.updateRaceTable(data))
     .catch(err => console.log(err));
 }

@@ -95,6 +95,28 @@ app.post('/races', (req, res) => {
 const informationRouter = require('./routes/information')
 app.use('/information', informationRouter)
 
+
+/* app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
+app.get('/admin', (req, res) => {
+  request(
+    { url: 'https://10.0.1.10:5500/admin.html' },
+    (error, response, body) => {
+      if (error || response.statusCode !== 200) {
+        return res.status(500).json({ type: 'error', message: err.message });
+      }
+
+      res.json(JSON.parse(body));
+    }
+  )
+});
+
+const PORT = process.env.PORT || 5500;
+app.listen(PORT, () => console.log(`listening on ${PORT}`)); */
+
 const port = 5000;
 
 app.listen(port, () =>{
