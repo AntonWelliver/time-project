@@ -4,6 +4,7 @@ const Race = require('../models/Race')
 
 //Getting All
 router.get('/', async (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
     try {
         const information = await Race.find()
         res.json(information)
