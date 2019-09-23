@@ -52,23 +52,24 @@
                     <div class="card p-4">
                         <div class="card-body race-table">
                             <button id="newRaceButton" class="btn btn-outline-success mb-2" data-toggle="tooltip"
-                                data-placement="right" title="Click to add a new race">New Race <i class="fas fa-plus"></i>
+                                data-placement="right" title="Click to add a new race">New Race <i
+                                    class="fas fa-plus"></i>
                             </button>
-                            <table class="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Date</th>
-                                        <th scope="col">Location</th>
-                                        <th scope="col">Show</th>
-                                        <th scope="col">Edit</th>
-                                        <th scope="col">Delete</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="raceTableBody">
-
-                                </tbody>
-                            </table>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Location</th>
+                                            <th scope="col">Show</th>
+                                            <th scope="col">Edit</th>
+                                            <th scope="col">Delete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="raceTableBody"></tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
 
@@ -115,34 +116,33 @@
                                     </div>
                                 </div>
                                 <div class="col-md-5">
-                                    <div class="form-group">
-                                        <label for="admin-race">Class:</label>
-                                        <select id="race-competition-class" required>
-                                            <option value="" disabled selected>...</option>
-                                            <option value="spring-race">Male</option>
-                                            <option value="summer-race">Female</option>
-                                        </select>
-                                    </div>
+                                    <label for="admin-race">Display on frontpage:</label>
+                                    <label class="switch"><input type="checkbox" id="togBtn">
+                                        <div class="slider round">
+                                            <span class="on">ON</span><span class="off">OFF</span>
+                                        </div>
+                                    </label>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <textarea id="race-message" class="form-control"
-                                            placeholder="Race Info..."></textarea>
-                                    </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <textarea id="race-message" class="form-control"
+                                        placeholder="Race Info..."></textarea>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <input type="submit" value="Save" id="saveButton"
-                                            class="btn btn-outline-success btn-block">
-                                    </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="submit" value="Save" id="saveButton"
+                                        class="btn btn-outline-success btn-block">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 
