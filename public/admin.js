@@ -49,18 +49,18 @@ class UI {
     }
 
     updateRaceTable(theRaceList) {
-        const filledBlueStar = `<a href="#" class="star-item"><i class="fas fa-star"></i></a>`;
-        const emptyBlueStar = `<a href="#" class="star-item"><i class="far fa-star"></i></a>`;
+        const checkedCircle = `<a href="#" class="circle-item"><i class="fas fa-check-circle"></i></a>`;
+        const emptyCircle = `<a href="#" class="circle-item"><i class="far fa-circle"></i></a>`;
         //Remove Excisting Rows
         this.raceTableBody.innerHTML = "";
         //Create The Excisting Rows
         let output = "";
-        let star = emptyBlueStar;
+        let circle = emptyCircle;
         theRaceList.forEach(function (race) {
             if (race.show === true) {
-                star = filledBlueStar;
+                circle = checkedCircle;
             } else {
-                star = emptyBlueStar;
+                circle = emptyCircle;
             };
 
             let raceDate = new Date(race.date).toLocaleDateString();
@@ -71,7 +71,7 @@ class UI {
             <td>${race.name}</td>
             <td>${raceDate}</td>
             <td>${race.location}</td>
-            <td>${star}</td>
+            <td>${circle}</td>
             <td><a href="#" class="edit-item" data-id="${race.id}"><i class="fa fa-pencil"></i></a></td>
             <td><a href="#" class="delete-item" data-id="${race.id}"><i class="fa fa-remove"></i></a></td>
         </tr>
