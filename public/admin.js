@@ -21,7 +21,7 @@ class UI {
     hideRaceInfoEdit() {
         this.raceInfoEdit.classList.add("d-none");
     }
-    
+
     expandRaceInfoTable() {
         this.raceInfoTable.classList.remove("col-md-6");
         this.raceInfoTable.classList.add("col-md-12");
@@ -30,7 +30,7 @@ class UI {
     displayRaceInfoEdit() {
         this.raceInfoEdit.classList.remove("d-none");
     }
-    
+
     decreaseRaceInfoTable() {
         this.raceInfoTable.classList.remove("col-md-12");
         this.raceInfoTable.classList.add("col-md-6");
@@ -56,26 +56,29 @@ class UI {
         //Create The Excisting Rows
         let output = "";
         let star = emptyBlueStar;
-        theRaceList.forEach(function(race) {
+        theRaceList.forEach(function (race) {
             if (race.show === true) {
                 star = filledBlueStar;
             } else {
                 star = emptyBlueStar;
             };
 
+            let raceDate = new Date(race.date).toLocaleDateString();
+            console.log(raceDate);
+
             output += `
         <tr>
             <td>${race.name}</td>
-            <td>${race.date}</td>
+            <td>${raceDate}</td>
             <td>${race.location}</td>
             <td>${star}</td>
             <td><a href="#" class="edit-item" data-id="${race.id}"><i class="fa fa-pencil"></i></a></td>
             <td><a href="#" class="delete-item" data-id="${race.id}"><i class="fa fa-remove"></i></a></td>
         </tr>
             `;
-          });
-          //Update Race Table With Content
-          this.raceTableBody.innerHTML = output;
+        });
+        //Update Race Table With Content
+        this.raceTableBody.innerHTML = output;
     }
 }
 
@@ -99,7 +102,7 @@ let accessHTTP = new AccessHTTP();
 ui.raceTableBody.addEventListener("click", editRaceInfo);
 
 function editRaceInfo(e) {
-    if(e.target.parentElement.classList.contains("edit-item")) {
+    if (e.target.parentElement.classList.contains("edit-item")) {
         const id = e.target.parentElement.dataset.id;
 
         ui.raceId = id;
@@ -116,8 +119,8 @@ function editRaceInfo(e) {
 
 function getRaceInfo() {
     accessHTTP.get("http://localhost:5000/information")
-    .then(data => ui.updateRaceTable(data))
-    .catch(err => console.log(err));
+        .then(data => ui.updateRaceTable(data))
+        .catch(err => console.log(err));
 }
 
 ui.hideAlert();
@@ -131,7 +134,7 @@ ui.newRaceButton.addEventListener("click", displayRaceInfo);
 function displayRaceInfo(e) {
     ui.decreaseRaceInfoTable();
     ui.displayRaceInfoEdit();
-    
+
     e.preventDefault();
 }
 

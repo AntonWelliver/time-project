@@ -7,6 +7,12 @@ const mongoose = require('mongoose');
 
 const app = express();
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
+
 //Connect To Mongoose
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true
@@ -28,69 +34,8 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-//Index Route
-app.get('/', (req, res)=> {
-    const title = 'Welcome';
-    res.render('index', {
-        title: title
-    });
-});
-
-//About Route
-app.get('/about', (req, res)=> {
-    res.render('about');
-});
-
-//Add Race Form
-app.get('/races/add', (req, res)=> {
-    res.render('races/add');
-});
-
-//Process Form
-app.post('/races', (req, res) => {
-    let errors = [];
-
-    if(!req.body.name) {
-        errors.push({text:'Please add a name'});
-    }
-    if(!req.body.distance) {
-        errors.push({text:'Please add a distance'});
-    }
-    if(!req.body.date) {
-        errors.push({text:'Please add a date'});
-    }
-    if(!req.body.capacity) {
-        errors.push({text:'Please add a capacity'});
-    }
-    if(!req.body.location) {
-        errors.push({text:'Please add a location'});
-    }
-
-    if(errors.length > 0){
-        res.render('races/add', {
-            errors: errors,
-            name: req.body.name,
-            distance: req.body.distance,
-            date: req.body.date,
-            capacity: req.body.capacity,
-            location: req.body.location
-        });
-    } else {
-        const newItem = {
-            name: req.body.name,
-            distance: req.body.distance,
-            date: req.body.date,
-            capacity: req.body.capacity,
-            location: req.body.location,
-            message: req.body.message
-        }
-        new Race(newItem)
-        .save()
-        .then(race => {
-            res.redirect('/races');
-        })
-    }
-});
+// Set static folder
+app.use(express.static('public'));
 
 const informationRouter = require('./routes/information')
 app.use('/information', informationRouter)
