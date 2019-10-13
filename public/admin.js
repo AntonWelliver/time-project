@@ -3,6 +3,7 @@ class UI {
     constructor() {
         this.raceInfoEdit = document.getElementById('raceInfoEdit');
         this.raceInfoTable = document.getElementById('raceInfoTable');
+        this.raceInfoH3 = document.getElementById('raceInfoH3');
         this.raceTableBody = document.getElementById('raceTableBody');
         this.newRaceButton = document.getElementById('newRaceButton');
         this.saveButton = document.getElementById('saveButton');
@@ -120,6 +121,8 @@ function editRaceInfo(e) {
         ui.raceId = id;
         ui.addState = false;
         //Get Data From Database
+        ui.raceInfoH3.innerHTML = "Edit Race Info";
+
         ui.decreaseRaceInfoTable();
         ui.displayRaceInfoEdit();
     }
@@ -144,6 +147,7 @@ getRaceInfo();
 ui.newRaceButton.addEventListener("click", displayRaceInfo);
 
 function displayRaceInfo(e) {
+    ui.raceInfoH3.innerHTML = "Add New Race";
     ui.decreaseRaceInfoTable();
     ui.displayRaceInfoEdit();
     ui.addState = true;
@@ -177,14 +181,12 @@ function saveRaceInfo(e) {
     if(ui.addState == true) {
         // POST
         accessHTTP.post("http://localhost:5000/information", data)
-        .then(data => console.log(data))
+        .then(data => getRaceInfo())
         .catch(err => console.log(err));
     } else {
         // PATCH
     }
-
-    getRaceInfo();
-    
+  
     //Create Post
     //test.post("test-data/race-info-list.json", data)
 
