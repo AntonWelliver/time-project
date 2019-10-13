@@ -72,8 +72,8 @@ class UI {
             <td>${raceDate}</td>
             <td>${race.location}</td>
             <td>${circle}</td>
-            <td><a href="#" class="edit-item" data-id="${race.id}"><i class="fa fa-pencil"></i></a></td>
-            <td><a href="#" class="delete-item" data-id="${race.id}"><i class="fa fa-remove"></i></a></td>
+            <td><a href="#" class="edit-item" data-id="${race._id}"><i class="fa fa-pencil"></i></a></td>
+            <td><a href="#" class="delete-item" data-id="${race._id}"><i class="fa fa-remove"></i></a></td>
         </tr>
             `;
         });
