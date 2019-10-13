@@ -24,9 +24,9 @@ DELETE http://localhost:5000/information/5d55a9128220bd2a3052e375
 
 ###
 
-PATCH http://localhost:5000/information/5d55a92d8220bd2a3052e376
+PATCH http://localhost:5000/information/5da38047fe75283794e6cc97
 Content-Type: application/json
 
 {
-    "name": "Sommarloppet"
+    "name": "Winter Race 6k"
 }

@@ -11,11 +11,11 @@ class UI {
         this.raceDate = document.getElementById('race-date');
         this.raceCapacity = document.getElementById('race-capacity');
         this.raceLocation = document.getElementById('race-location');
-        this.raceCompetitionClass = document.getElementById('race-competition-class');
+        this.raceDisplay = document.getElementById('togBtn');
         this.raceMessage = document.getElementById('race-message');
         this.alert = document.getElementById('alert');
         this.raceId = "";
-        this.state = "";
+        this.addState = true;
     }
 
     hideRaceInfoEdit() {
@@ -57,14 +57,13 @@ class UI {
         let output = "";
         let circle = emptyCircle;
         theRaceList.forEach(function (race) {
-            if (race.show === true) {
+            if (race.display === true) {
                 circle = checkedCircle;
             } else {
                 circle = emptyCircle;
             };
 
             let raceDate = new Date(race.date).toLocaleDateString();
-            console.log(raceDate);
 
             output += `
         <tr>
@@ -94,6 +93,19 @@ class AccessHTTP {
         const resData = await response.json();
         return resData;
     }
+
+    async post(url, data) {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        const resData = await response.json();
+        return resData;
+    }
 }
 
 let accessHTTP = new AccessHTTP();
@@ -106,7 +118,7 @@ function editRaceInfo(e) {
         const id = e.target.parentElement.dataset.id;
 
         ui.raceId = id;
-        ui.state = "edit";
+        ui.addState = false;
         //Get Data From Database
         ui.decreaseRaceInfoTable();
         ui.displayRaceInfoEdit();
@@ -134,6 +146,7 @@ ui.newRaceButton.addEventListener("click", displayRaceInfo);
 function displayRaceInfo(e) {
     ui.decreaseRaceInfoTable();
     ui.displayRaceInfoEdit();
+    ui.addState = true;
 
     e.preventDefault();
 }
@@ -146,7 +159,7 @@ function saveRaceInfo(e) {
     const date = ui.raceDate.value;
     const capacity = ui.raceCapacity.value;
     const location = ui.raceLocation.value;
-    const competitionClass = ui.raceCompetitionClass.value;
+    const display = ui.raceDisplay.value;
     const message = ui.raceMessage.value;
 
     //Data For Database
@@ -156,13 +169,22 @@ function saveRaceInfo(e) {
         date,
         capacity,
         location,
-        competitionClass,
+        display,
         message
     }
 
-    //Check For Edit State
-    //If Edit Then PUT Or Else POST
+    //Check For Add State, If Add Do POST Or Else PATCH
+    if(ui.addState == true) {
+        // POST
+        accessHTTP.post("http://localhost:5000/information", data)
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
+    } else {
+        // PATCH
+    }
 
+    getRaceInfo();
+    
     //Create Post
     //test.post("test-data/race-info-list.json", data)
 
