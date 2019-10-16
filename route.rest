@@ -24,9 +24,9 @@ DELETE http://localhost:5000/information/5d55a9128220bd2a3052e375
 
 ###
 
-PATCH http://localhost:5000/information/5da38047fe75283794e6cc97
+PATCH http://localhost:5000/information/5da770831a2d512bdcd73418
 Content-Type: application/json
 
 {
-    "name": "Winter Race 6k"
+    "display": true
 }

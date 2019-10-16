@@ -80,6 +80,24 @@ class UI {
         //Update Race Table With Content
         this.raceTableBody.innerHTML = output;
     }
+    updateRaceInfoProducer(raceInfo) {
+        const dateObject = new Date(raceInfo.date);
+        const localDateStr = dateObject.toLocaleDateString();
+        const localTimeStr = dateObject.toLocaleTimeString();
+
+        ui.raceDate.value = `${localDateStr}T${localTimeStr}`;
+        ui.raceName.value = raceInfo.name;
+        ui.raceDistance.value = raceInfo.distance;
+        ui.raceCapacity.value = raceInfo.capacity;
+        ui.raceLocation.value = raceInfo.location;
+        ui.raceMessage.value = raceInfo.message;
+
+        if(raceInfo.display === true) {
+            ui.raceDisplay.checked = true;
+        } else {
+            ui.raceDisplay.checked = false;
+        }
+    }
 }
 
 ui = new UI();
@@ -120,11 +138,16 @@ function editRaceInfo(e) {
 
         ui.raceId = id;
         ui.addState = false;
-        //Get Data From Database
-        ui.raceInfoH3.innerHTML = "Edit Race Info";
 
         ui.decreaseRaceInfoTable();
         ui.displayraceInfoProducer();
+
+        //Get Data From Database
+        accessHTTP.get(`http://localhost:5000/information/${id}`)
+        .then(raceInfo => ui.updateRaceInfoProducer(raceInfo))
+        .catch(err => console.log(err));
+        
+        ui.raceInfoH3.innerHTML = "Edit Race Info";
     }
 
 
@@ -134,7 +157,7 @@ function editRaceInfo(e) {
 
 function getRaceInfo() {
     accessHTTP.get("http://localhost:5000/information")
-        .then(data => ui.updateRaceTable(data))
+        .then(raceInfo => ui.updateRaceTable(raceInfo))
         .catch(err => console.log(err));
 }
 
@@ -163,11 +186,11 @@ function saveRaceInfo(e) {
     const date = ui.raceDate.value;
     const capacity = ui.raceCapacity.value;
     const location = ui.raceLocation.value;
-    const display = ui.raceDisplay.value;
+    const display = ui.raceDisplay.checked;
     const message = ui.raceMessage.value;
 
     //Data For Database
-    const data = {
+    const raceInfo = {
         name,
         distance,
         date,
@@ -180,11 +203,12 @@ function saveRaceInfo(e) {
     //Check For Add State, If Add Do POST Or Else PATCH
     if(ui.addState == true) {
         // POST
-        accessHTTP.post("http://localhost:5000/information", data)
-        .then(data => getRaceInfo())
+        accessHTTP.post("http://localhost:5000/information", raceInfo)
+        .then(raceInfo => getRaceInfo())
         .catch(err => console.log(err));
     } else {
         // PATCH
+        
     }
   
     //Create Post
