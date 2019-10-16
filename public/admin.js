@@ -1,7 +1,7 @@
 /* User Interface */
 class UI {
     constructor() {
-        this.raceInfoEdit = document.getElementById('raceInfoEdit');
+        this.raceInfoProducer = document.getElementById('raceInfoProducer');
         this.raceInfoTable = document.getElementById('raceInfoTable');
         this.raceInfoH3 = document.getElementById('raceInfoH3');
         this.raceTableBody = document.getElementById('raceTableBody');
@@ -19,8 +19,8 @@ class UI {
         this.addState = true;
     }
 
-    hideRaceInfoEdit() {
-        this.raceInfoEdit.classList.add("d-none");
+    hideraceInfoProducer() {
+        this.raceInfoProducer.classList.add("d-none");
     }
 
     expandRaceInfoTable() {
@@ -28,8 +28,8 @@ class UI {
         this.raceInfoTable.classList.add("col-md-12");
     }
 
-    displayRaceInfoEdit() {
-        this.raceInfoEdit.classList.remove("d-none");
+    displayraceInfoProducer() {
+        this.raceInfoProducer.classList.remove("d-none");
     }
 
     decreaseRaceInfoTable() {
@@ -124,7 +124,7 @@ function editRaceInfo(e) {
         ui.raceInfoH3.innerHTML = "Edit Race Info";
 
         ui.decreaseRaceInfoTable();
-        ui.displayRaceInfoEdit();
+        ui.displayraceInfoProducer();
     }
 
 
@@ -139,7 +139,7 @@ function getRaceInfo() {
 }
 
 ui.hideAlert();
-ui.hideRaceInfoEdit();
+ui.hideraceInfoProducer();
 ui.expandRaceInfoTable();
 
 getRaceInfo();
@@ -149,7 +149,7 @@ ui.newRaceButton.addEventListener("click", displayRaceInfo);
 function displayRaceInfo(e) {
     ui.raceInfoH3.innerHTML = "Add New Race";
     ui.decreaseRaceInfoTable();
-    ui.displayRaceInfoEdit();
+    ui.displayraceInfoProducer();
     ui.addState = true;
 
     e.preventDefault();
