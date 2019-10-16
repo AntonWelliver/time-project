@@ -125,6 +125,19 @@ class AccessHTTP {
         const resData = await response.json();
         return resData;
     }
+
+    async patch(url, data) {
+        const response = await fetch(url, {
+            method: 'PATCH',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        const resData = await response.json();
+        return resData;
+    }
 }
 
 let accessHTTP = new AccessHTTP();
@@ -204,11 +217,14 @@ function saveRaceInfo(e) {
     if(ui.addState == true) {
         // POST
         accessHTTP.post("http://localhost:5000/information", raceInfo)
-        .then(raceInfo => getRaceInfo())
+        .then(() => getRaceInfo())
         .catch(err => console.log(err));
     } else {
         // PATCH
-        
+        const id = ui.raceId;
+        accessHTTP.patch(`http://localhost:5000/information/${id}`, raceInfo)
+        .then(() => getRaceInfo())
+        .catch(err => console.log(err));
     }
   
     //Create Post
