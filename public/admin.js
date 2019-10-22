@@ -1,3 +1,4 @@
+
 /* User Interface */
 class UI {
     constructor() {
@@ -104,12 +105,14 @@ ui = new UI();
 
 class AccessHTTP {
     constructor() {
-
+        this.status = 0;
     }
 
     async get(url) {
         const response = await fetch(url);
         const resData = await response.json();
+        this.status = response.status;
+
         return resData;
     }
 
@@ -123,6 +126,8 @@ class AccessHTTP {
         });
 
         const resData = await response.json();
+        this.status = response.status;
+
         return resData;
     }
 
@@ -136,6 +141,8 @@ class AccessHTTP {
         });
 
         const resData = await response.json();
+        this.status = response.status;
+
         return resData;
     }
 }
@@ -223,19 +230,43 @@ function saveRaceInfo(e) {
         // PATCH
         const id = ui.raceId;
         accessHTTP.patch(`http://localhost:5000/information/${id}`, raceInfo)
-        .then(() => getRaceInfo())
-        .catch(err => console.log(err));
+        .then(updateRaceInfo => {
+            if (updateRaceInfo !== null) {
+                let message = "";
+
+                switch (accessHTTP.status) {
+                    case 200:
+                        ui.showAlert("Save Successful.", "bg-success");
+                        break;
+
+                    case 404:
+                        ui.showAlert("404 Not Found.", "bg-danger");
+                        break;
+
+                    case 400:
+                        ui.showAlert("Invalid Request.", "bg-danger");
+                        break;
+                    
+                    default:
+                        ui.showAlert("Remote Server Error", "bg-danger");
+                }
+
+                setTimeout(() => {
+                    ui.hideAlert();
+                }, 2000);
+
+                getRaceInfo();
+            }
+        })
+        .catch(err => {
+            ui.showAlert("Server Error", "bg-danger");
+
+            setTimeout(() => {
+                ui.hideAlert();
+            }, 2000);
+        });
     }
-  
-    //Create Post
-    //test.post("test-data/race-info-list.json", data)
 
-    ui.showAlert("Save successful.", "bg-success");
-    setTimeout(() => {
-        ui.hideAlert();
-    }, 2000);
-
-    getRaceInfo();
     e.preventDefault();
 }
 
