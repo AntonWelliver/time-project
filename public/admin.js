@@ -190,6 +190,14 @@ getRaceInfo();
 ui.newRaceButton.addEventListener("click", displayRaceInfo);
 
 function displayRaceInfo(e) {
+    ui.raceName.value = "";
+    ui.raceDistance.value = "";
+    ui.raceDate.value = "";
+    ui.raceCapacity.value = "";
+    ui.raceLocation.value = "";
+    ui.raceDisplay.checked = false;
+    ui.raceMessage.value = "";
+
     ui.raceInfoH3.innerHTML = "Add New Race";
     ui.decreaseRaceInfoTable();
     ui.displayraceInfoProducer();
