@@ -51,7 +51,7 @@ class UI {
     }
 
     updateRaceTable(theRaceList) {
-        const checkedCircle = `<a href="#" class="circle-item"><i class="fas fa-check-circle"></i></a>`;
+        const checkedCircle = `<a href="#" class="circle-item"><i class="fas fa-circle"></i></a>`;
         const emptyCircle = `<a href="#" class="circle-item"><i class="far fa-circle"></i></a>`;
         //Remove Excisting Rows
         this.raceTableBody.innerHTML = "";
