@@ -27,9 +27,9 @@ const RaceSchema = new Schema({
         type: String,
         required: true
     },
-    display: {
-        type: Boolean,
-        default: false
+    displayOption: {
+        type: String,
+        required: true
     }
 });
 

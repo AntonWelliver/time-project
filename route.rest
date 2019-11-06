@@ -14,8 +14,9 @@ Content-Type: application/json
     "distance": 10,
     "date": "2019-04-12 15:00",
     "capacity": 100,
-    "location": "Malmö",
-    "message": "Welcome to the Spring Race 10km in Gothenburg! Good luck!"
+    "location": "Göteborg",
+    "message": "Welcome to the Spring Race 10km in Gothenburg! Good luck!",
+    "displayOption": "x"
 }
 
 ###

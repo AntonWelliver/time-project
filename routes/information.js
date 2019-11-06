@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
         date: req.body.date,
         capacity: req.body.capacity,
         location: req.body.location,
-        display: req.body.display,
+        displayOption: req.body.displayOption,
         message: req.body.message
     })
 
@@ -58,8 +58,8 @@ router.patch('/:id', getInformation, async (req, res) => {
     if (req.body.message != null) {
         res.information.message = req.body.message
     }
-    if (req.body.display != null) {
-        res.information.display = req.body.display
+    if (req.body.displayOption != null) {
+        res.information.displayOption = req.body.displayOption
     }
     try {
         const updatedInformation = await res.information.save()

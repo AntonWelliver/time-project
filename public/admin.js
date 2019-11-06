@@ -13,7 +13,10 @@ class UI {
         this.raceDate = document.getElementById('race-date');
         this.raceCapacity = document.getElementById('race-capacity');
         this.raceLocation = document.getElementById('race-location');
-        this.raceDisplay = document.getElementById('togBtn');
+        this.displayOption1 = document.getElementById('option1');
+        this.displayOption2 = document.getElementById('option2');
+        this.displayOption3 = document.getElementById('option3');
+        this.displayOption4 = document.getElementById('option4');
         this.raceMessage = document.getElementById('race-message');
         this.alert = document.getElementById('alert');
         this.raceId = "";
@@ -29,7 +32,7 @@ class UI {
         this.raceInfoTable.classList.add("col-md-12");
     }
 
-    displayraceInfoProducer() {
+    displayRaceInfoProducer() {
         this.raceInfoProducer.classList.remove("d-none");
     }
 
@@ -51,16 +54,25 @@ class UI {
     }
 
     updateRaceTable(theRaceList) {
-        const checkedCircle = `<a href="#" class="circle-item"><i class="fas fa-circle"></i></a>`;
+        const checkedRedCircle = `<a href="#" class="circle-item"><i class="fas fa-circle text-danger"></i></a>`;
+        const checkedBlueCircle = `<a href="#" class="circle-item"><i class="fas fa-circle text-primary"></i></a>`;
+        const checkedGreenCircle = `<a href="#" class="circle-item"><i class="fas fa-circle text-success"></i></a>`;
         const emptyCircle = `<a href="#" class="circle-item"><i class="far fa-circle"></i></a>`;
+
         //Remove Excisting Rows
         this.raceTableBody.innerHTML = "";
+
         //Create The Excisting Rows
         let output = "";
         let circle = emptyCircle;
+
         theRaceList.forEach(function (race) {
-            if (race.display === true) {
-                circle = checkedCircle;
+            if (race.displayOption == ui.displayOption1.value) {
+                circle = checkedRedCircle;
+            } else if (race.displayOption == ui.displayOption2.value) {
+                circle = checkedBlueCircle;
+            } else if (race.displayOption == ui.displayOption3.value) {
+                circle = checkedGreenCircle;
             } else {
                 circle = emptyCircle;
             };
@@ -92,11 +104,15 @@ class UI {
         ui.raceCapacity.value = raceInfo.capacity;
         ui.raceLocation.value = raceInfo.location;
         ui.raceMessage.value = raceInfo.message;
-
-        if(raceInfo.display === true) {
-            ui.raceDisplay.checked = true;
+        
+        if (raceInfo.displayOption === ui.displayOption1.value) {
+            ui.displayOption1.checked = true;
+        } else if (raceInfo.displayOption === ui.displayOption2.value) {
+            ui.displayOption2.checked = true;
+        } else if (raceInfo.displayOption === ui.displayOption3.value) {
+            ui.displayOption3.checked = true;
         } else {
-            ui.raceDisplay.checked = false;
+            ui.displayOption4.checked = true;
         }
     }
 }
@@ -160,7 +176,7 @@ function editRaceInfo(e) {
         ui.addState = false;
 
         ui.decreaseRaceInfoTable();
-        ui.displayraceInfoProducer();
+        ui.displayRaceInfoProducer();
 
         //Get Data From Database
         accessHTTP.get(`http://localhost:5000/information/${id}`)
@@ -195,12 +211,12 @@ function displayRaceInfo(e) {
     ui.raceDate.value = "";
     ui.raceCapacity.value = "";
     ui.raceLocation.value = "";
-    ui.raceDisplay.checked = false;
+    ui.displayOption4.checked = true;
     ui.raceMessage.value = "";
 
     ui.raceInfoH3.innerHTML = "Add New Race";
     ui.decreaseRaceInfoTable();
-    ui.displayraceInfoProducer();
+    ui.displayRaceInfoProducer();
     ui.addState = true;
 
     e.preventDefault();
@@ -214,8 +230,21 @@ function saveRaceInfo(e) {
     const date = ui.raceDate.value;
     const capacity = ui.raceCapacity.value;
     const location = ui.raceLocation.value;
-    const display = ui.raceDisplay.checked;
     const message = ui.raceMessage.value;
+
+    let selectedOption = "";
+
+    if (ui.displayOption1.checked == true) {
+        selectedOption = ui.displayOption1.value;
+    } else if (ui.displayOption2.checked == true) {
+        selectedOption = ui.displayOption2.value;
+    } else if (ui.displayOption3.checked == true) {
+        selectedOption = ui.displayOption3.value;
+    } else {
+        selectedOption = ui.displayOption4.value;
+    }
+
+    const displayOption = selectedOption;
 
     //Data For Database
     const raceInfo = {
@@ -224,12 +253,13 @@ function saveRaceInfo(e) {
         date,
         capacity,
         location,
-        display,
+        displayOption,
         message
     }
 
     //Check For Add State, If Add Do POST Or Else PATCH
     if(ui.addState == true) {
+        console.log(raceInfo);
         // POST
         accessHTTP.post("http://localhost:5000/information", raceInfo)
         .then(() => getRaceInfo())
@@ -240,7 +270,6 @@ function saveRaceInfo(e) {
         accessHTTP.patch(`http://localhost:5000/information/${id}`, raceInfo)
         .then(updateRaceInfo => {
             if (updateRaceInfo !== null) {
-                let message = "";
 
                 switch (accessHTTP.status) {
                     case 200:
